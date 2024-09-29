@@ -1,6 +1,7 @@
 use cosmwasm_std::{
     entry_point, to_binary, Addr, BankMsg, Binary, BlockInfo, CanonicalAddr, Coin, CosmosMsg, Deps, DepsMut, Env, MessageInfo, Response, StdError, StdResult, Storage, Timestamp, Uint128, Uint64
 };
+use secret_toolkit::permit::Permit;
 
 use crate::msg::{ExecuteMsg, InstantiateMsg, QueryAnswer, QueryMsg, QueryWithPermit};
 use crate::state::{add_to_bid, Auction, HighestBid, ADMIN, AUCTION, AUCTION_STARTED, BIDS, HIGHEST_BID, SALE_COMPLETED};
@@ -75,7 +76,7 @@ pub fn execute(deps: DepsMut, env: Env, info: MessageInfo, msg: ExecuteMsg) -> S
 
 pub fn try_set_auction(
     deps: DepsMut, 
-    env: Env, 
+    _env: Env, 
     sender: Addr, 
     secret: String, 
     minimum_bid: Uint128, 
