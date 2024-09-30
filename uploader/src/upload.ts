@@ -20,6 +20,7 @@ const uploadContract = async (contract_wasm: Buffer): Promise<{code_id: string, 
     let tx = await secretjs.tx.compute.storeCode(
         {
             sender: wallet.address,
+            // @ts-ignore
             wasm_byte_code: contract_wasm,
             source: "",
             builder: "",
