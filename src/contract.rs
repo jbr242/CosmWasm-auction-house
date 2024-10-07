@@ -17,7 +17,7 @@ pub fn instantiate(
     let admin = deps.api.addr_canonicalize(admin.as_str())?;
     ADMIN.save(deps.storage, &admin)?;
 
-    AUCTION_STARTED.save(deps.storage, &false);
+    AUCTION_STARTED.save(deps.storage, &false)?;
     SALE_COMPLETED.save(deps.storage, &false)?;
 
     Ok(Response::default())
